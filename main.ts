@@ -14,6 +14,9 @@ const fragments: string[] = [
 ];
 
 function assembleReview(pieces: string[]): string {
+  if (pieces.length === 0 || pieces.some((p) => p.trim() === "")) {
+    throw new Error("review fragments must be non-empty");
+  }
   const joined = pieces.join(" ");
   return joined.replace(/\s+/g, " ").trim();
 }
